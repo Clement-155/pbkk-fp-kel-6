@@ -5,13 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\KamusBahasa;
 
 //return type View
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\View\View;
 
 //return type redirectResponse
 use Illuminate\Http\RedirectResponse;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class KamusBahasaController extends Controller
 {
@@ -23,9 +26,14 @@ class KamusBahasaController extends Controller
      */
     public function index(): View
     {
-        //get posts
-        $KamusBahasa = KamusBahasa::latest()->paginate(10);
-
+        if(Cache::get(Carbon::now()->toDateString())){
+            $KamusBahasa = Cache::get(Carbon::now()->toDateString());
+        }
+        else{
+            $KamusBahasa = KamusBahasa::latest()->paginate(10);
+            Cache::add(Hash::make($KamusBahasa), $KamusBahasa, 600);
+        }
+        
         //render view with posts
         return view('KamusBahasa.index', compact('KamusBahasa'));
     }
