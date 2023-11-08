@@ -8,9 +8,12 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class LogBackup {
+    /**
+     * Creates a daily backup of laravel's log
+     */
     public function execute(){
         $curTime = Carbon::now();
-        dd(File::copy( storage_path('logs/laravel.log'), storage_path('backup/'. $curTime->toDateString() .'laravel.log')));     
+        File::copy( storage_path('logs/laravel.log'), storage_path('backup/'. $curTime->toDateString() .'laravel.log'));     
 
     }
 }

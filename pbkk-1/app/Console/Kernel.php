@@ -10,6 +10,7 @@ class Kernel extends ConsoleKernel
 {
     /**
      * Define the application's command schedule.
+     * Dev Note : Ingat untuk setup cron itu sendiri agar ini berjalan otomatis.
      */
     protected function schedule(Schedule $schedule): void
     {
@@ -17,7 +18,7 @@ class Kernel extends ConsoleKernel
                 $task = new LogBackup();
                 $task->execute();
         }
-        )->everyTenSeconds();
+        )->daily();
     }
 
     /**
