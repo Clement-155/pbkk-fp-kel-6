@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KamusBahasa;
+use App\Models\Bahasa;
 
 //return type View
 use Illuminate\Support\Carbon;
@@ -44,8 +45,18 @@ class KamusBahasaController extends Controller
      */
     public function create(): View
     {
+        $data = Bahasa::all();
+        // dd($data);
+
+        $bahasa = [];
+
+        foreach ($data as $key => $value) {
+            $bahasa[$value->id] = $value->bahasa;
+        }
+
+        // dd($bahasa);
         //Directs to resources/views/KamusBahasa/create.blade.php
-        return view('KamusBahasa.create');
+        return view('KamusBahasa.create', ['bahasa' => $bahasa]);
     }
 
     /**
