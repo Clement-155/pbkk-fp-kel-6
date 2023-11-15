@@ -19,11 +19,12 @@
                             @csrf
 
                             <div class="form-group">
+
                                 <label class="font-weight-bold">bahasa</label>
                                 <!-- <input type="text" class="form-control @error('bahasa') is-invalid @enderror" name="bahasa" value="{{ old('bahasa') }}" placeholder=""> -->
                                 <select>
-                                    @foreach ($bahasa as $bjir)
-                                        <option value="{{ $bjir }}">{{ $bjir }}</option>
+                                    @foreach ($bahasa as $Bahasa)
+                                        <option value="{{ $Bahasa }}">{{ $Bahasa }}</option>
                                     @endforeach
                                 </select>
                                 <!-- error message untuk bahasa -->
