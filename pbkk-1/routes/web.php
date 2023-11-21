@@ -31,3 +31,5 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/KamusBahasa', \App\Http\Controllers\KamusBahasaController::class)->middleware('auth');
+Route::resource('/PaketSoal', \App\Http\Controllers\KamusBahasaController::class)->middleware('auth');
+Route::resource('/Soal', \App\Http\Controllers\KamusBahasaController::class)->middleware('auth');
