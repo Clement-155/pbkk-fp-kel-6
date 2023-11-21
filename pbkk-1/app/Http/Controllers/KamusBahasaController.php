@@ -51,8 +51,10 @@ class KamusBahasaController extends Controller
         $bahasa = [];
 
         foreach ($data as $key => $value) {
-            $bahasa[$value->id] = $value->bahasa;
+            $bahasa[$value->id] = ["id"=>$value->id,"kata"=>$value->bahasa];
         }
+
+        ksort($bahasa);
 
         // dd($bahasa);
         //Directs to resources/views/KamusBahasa/create.blade.php
