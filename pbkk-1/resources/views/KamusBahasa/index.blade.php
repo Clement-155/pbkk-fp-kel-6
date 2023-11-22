@@ -9,7 +9,7 @@
                     <!-- Login Message -->
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                            <div class="light:bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                                 <div class="p-6 text-gray-900 dark:text-gray-100">
                                     {{ __("You're logged in!") }}
                                 </div>
@@ -40,7 +40,7 @@
                                 @forelse ($KamusBahasa as $kata)
                                 <tr>
                                     <td>{{ $kata->last_editor }}</td>
-                                    <td>{{ $nama_bahasas[array_search($kata->bahasas_id, $id_bahasas)] }}</td>
+                                    <td>{{ $kata->name }}</td>
                                     <td>{{ $kata->kata }}</td>
                                     <td>{{ $kata->pengertian }}</td>
                                     <td>{{ $kata->contoh }}</td>
@@ -51,6 +51,7 @@
                                     Kamus masih kosong!
                                 </div>
                                 @endforelse
+                                {{ $KamusBahasa->links() }}
                             </tbody>
                         </table>
                     </div>

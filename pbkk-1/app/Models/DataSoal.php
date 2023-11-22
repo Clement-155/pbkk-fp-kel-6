@@ -18,6 +18,7 @@ class DataSoal extends Model
      */
 
      protected $fillable = [
+        'last_editor',
         'paket_soals_id',
         'tipe_soal',
         'soal',

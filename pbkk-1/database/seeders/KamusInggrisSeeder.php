@@ -15,8 +15,12 @@ class KamusInggrisSeeder extends Seeder
     {
         $row = 1;
         if (($handle = fopen(storage_path('seeding/Dictionary.csv'), "r")) !== FALSE) {
-            while (($row < 100 && $data = fgetcsv($handle, 1500, ",")) !== FALSE) {
-
+            while (($row < 150000 && $data = fgetcsv($handle, 1500, ",")) !== FALSE) {
+                if($row % 500 > 0){
+                    $row++;
+                    continue;
+                }
+                else{
                 DB::table('kamus_bahasas')->insert(
                     [
         
@@ -30,8 +34,11 @@ class KamusInggrisSeeder extends Seeder
                     );
                     $row++;
                 }
+            }
             fclose($handle);
         }
+
+
 
     }
     

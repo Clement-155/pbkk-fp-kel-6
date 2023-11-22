@@ -32,16 +32,14 @@ class KamusBahasaController extends Controller
             $KamusBahasa = Cache::get(Carbon::now()->toDateString());
         }
         else{
-            $KamusBahasa = KamusBahasa::latest()->paginate(10);
+            $KamusBahasa = DB::table('kamus_bahasas')->join('users', 'kamus_bahasas.last_editor', '=', 'users.id')
+            ->select('users.name', 'kamus_bahasas.*')->paginate(10);
+            //$KamusBahasa = KamusBahasa::all();
             Cache::add(Hash::make($KamusBahasa), $KamusBahasa, 600);
         }
-
-        $bahasas = DB::table('bahasas')->get();
-        $id_bahasas = $bahasas->pluck('id')->toArray();
-        $nama_bahasas = $bahasas->pluck('bahasa')->toArray();
         
         //render view with posts
-        return view('KamusBahasa.index', compact('KamusBahasa', 'id_bahasas', 'nama_bahasas'));
+        return view('KamusBahasa.index', compact('KamusBahasa'));
     }
  /**
      * create

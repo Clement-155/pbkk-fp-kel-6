@@ -14,13 +14,14 @@ return new class extends Migration
         Schema::create('kamus_bahasas', function (Blueprint $table) {
             $table->id();
 
-            $table->string('last_editor');
-            $table->string('bahasa');
+            $table->foreignId('last_editor');
+            $table->foreignId('bahasa');
             $table->string('kata');
             $table->text('pengertian');
             $table->text('contoh');
 
-            
+            $table->foreign('last_editor')->references('id')->on('users');
+            $table->foreign('bahasa')->references('id')->on('bahasas');
 
             $table->timestamps();
         });

@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('paket_soals', function (Blueprint $table) {
             $table->id();
 
-            $table->string('last_editor');
+            $table->foreignId('last_editor');
             $table->foreignId('bahasas_id');
             $table->string('nama_paket');
             $table->text('deskripsi');
             $table->unsignedInteger('jumlah_soal')->default(0);
 
+            $table->foreign('last_editor')->references('id')->on('users');
             $table->foreign('bahasas_id')->references('id')->on('bahasas');
             $table->timestamps();
         });
