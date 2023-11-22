@@ -20,6 +20,7 @@ class PaketSoal extends Model
      */
 
      protected $fillable = [
+        'last_editor',
         'bahasas_id',
         'nama_paket',
         'deskripsi'

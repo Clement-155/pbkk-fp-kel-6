@@ -9,6 +9,7 @@ use App\Models\Bahasa;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 //return type redirectResponse
@@ -34,9 +35,13 @@ class KamusBahasaController extends Controller
             $KamusBahasa = KamusBahasa::latest()->paginate(10);
             Cache::add(Hash::make($KamusBahasa), $KamusBahasa, 600);
         }
+
+        $bahasas = DB::table('bahasas')->get();
+        $id_bahasas = $bahasas->pluck('id')->toArray();
+        $nama_bahasas = $bahasas->pluck('bahasa')->toArray();
         
         //render view with posts
-        return view('KamusBahasa.index', compact('KamusBahasa'));
+        return view('KamusBahasa.index', compact('KamusBahasa', 'id_bahasas', 'nama_bahasas'));
     }
  /**
      * create
@@ -72,7 +77,7 @@ class KamusBahasaController extends Controller
         //validate form
         $this->validate($request, [
             'bahasa' => 'required|min:1',
-            'kata' => 'required|min:1',
+            'kata' => 'required|min:1|distinct',
             'pengertian' => 'required|min:5',
             'contoh' => 'required|min:5',
         ]);

@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="background: rgb(18, 18, 18)" class="p-5 text-white text-center">
-                    <h1>Kamus Bahasa Terbuka</h1>
+                    <h1 class="h1">Kamus Bahasa Terbuka</h1>
                     <!-- Login Message -->
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -40,7 +40,7 @@
                                 @forelse ($KamusBahasa as $kata)
                                 <tr>
                                     <td>{{ $kata->last_editor }}</td>
-                                    <td>{{ $kata->bahasa }}</td>
+                                    <td>{{ $nama_bahasas[array_search($kata->bahasas_id, $id_bahasas)] }}</td>
                                     <td>{{ $kata->kata }}</td>
                                     <td>{{ $kata->pengertian }}</td>
                                     <td>{{ $kata->contoh }}</td>

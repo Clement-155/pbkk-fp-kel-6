@@ -14,7 +14,7 @@
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
-                        <form action="{{ route('KamusBahasa.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('PaketSoal.store') }}" method="POST" enctype="multipart/form-data">
                         
                             @csrf
 
@@ -24,7 +24,7 @@
                                 <!-- <input type="text" class="form-control @error('bahasa') is-invalid @enderror" name="bahasa" value="{{ old('bahasa') }}" placeholder=""> -->
                                 <select name="bahasa">
                                     @foreach ($bahasa as $Bahasa)
-                                        <option value="{{ $Bahasa }}">{{ $Bahasa }}</option>
+                                        <option value='{{ $Bahasa["id"] }}'>{{ $Bahasa["kata"] }}</option>
                                     @endforeach
                                 </select>
                                 <!-- error message untuk bahasa -->
@@ -36,11 +36,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">kata</label>
-                                <input type="text" class="form-control @error('kata') is-invalid @enderror" name="kata" value="{{ old('kata') }}" placeholder="">
+                                <label class="font-weight-bold">Nama Paket</label>
+                                <input type="text" class="form-control @error('nama_paket') is-invalid @enderror" name="nama_paket" value="{{ old('nama_paket') }}" placeholder="">
                             
                                 <!-- error message untuk kata -->
-                                @error('kata')
+                                @error('nama_paket')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -48,23 +48,11 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="font-weight-bold">pengertian</label>
-                                <textarea class="form-control @error('pengertian') is-invalid @enderror" name="pengertian" rows="5" placeholder="">{{ old('pengertian') }}</textarea>
+                                <label class="font-weight-bold">Deskripsi Paket</label>
+                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="5" placeholder="">{{ old('deskripsi') }}</textarea>
                             
                                 <!-- error message untuk pengertian -->
-                                @error('pengertian')
-                                    <div class="alert alert-danger mt-2">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                            </div>
-
-                            <div class="form-group">
-                                <label class="font-weight-bold">contoh</label>
-                                <textarea class="form-control @error('contoh') is-invalid @enderror" name="contoh" rows="5" placeholder="">{{ old('contoh') }}</textarea>
-                            
-                                <!-- error message untuk contoh -->
-                                @error('contoh')
+                                @error('deskripsi')
                                     <div class="alert alert-danger mt-2">
                                         {{ $message }}
                                     </div>
@@ -73,7 +61,7 @@
 
                             <button type="submit" class="m-2 btn btn-md btn-primary">SAVE</button>
                             <button type="reset" class="m-2 btn btn-md btn-warning">RESET</button>
-                            <a href="{{ route('KamusBahasa.index') }}" class="m-2 btn btn-md btn-secondary">RETURN</a>
+                            <a href="{{ route('PaketSoal.index') }}" class="m-2 btn btn-md btn-secondary">RETURN</a>
                         </form> 
                     </div>
                 </div>

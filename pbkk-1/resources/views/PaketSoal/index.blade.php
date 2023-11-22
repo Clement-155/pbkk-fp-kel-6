@@ -5,7 +5,8 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="background: rgb(18, 18, 18)" class="p-5 text-white text-center">
-                    <h1>Quiz Bahasa Terbuka</h1>
+                    <h1 class="h1">Quiz Bahasa Daerah</h1>
+                    
                     <p>Uji pemahaman anda dalam bahasa daerah!!</p>
                     <!-- Login Message -->
                     <div class="py-12">
@@ -38,7 +39,7 @@
                                 @forelse ($PaketSoal as $paket)
                                 <tr>
                                     <td>{{ $paket->last_editor }}</td>
-                                    <td>{{ $paket->bahasa }}</td>
+                                    <td>{{ $nama_bahasas[array_search($paket->bahasas_id, $id_bahasas)] }}</td>
                                     <td>{{ $paket->nama_paket }}</td>
                                     <td>{{ $paket->deskripsi }}</td>
                                     <td>{{ $paket->jumlah_soal }}</td>
