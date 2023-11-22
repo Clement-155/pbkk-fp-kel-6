@@ -4,7 +4,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-12">
-                <div style="background: rgb(18, 18, 18)" class="p-5 text-white text-center">
+                <div class="p-5 light:text-black dark:text-white text-center light:bg-light dark:bg-black">
                     <h1 class="h1">Kamus Bahasa Terbuka</h1>
                     <!-- Login Message -->
                     <div class="py-12">
