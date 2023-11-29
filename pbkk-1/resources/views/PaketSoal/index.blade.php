@@ -19,7 +19,7 @@
                 <div class="card border-0 shadow-sm rounded">
                     <div class="card-body">
                         <div class="row">
-                            <a href="{{ route('PaketSoal.create') }}" class="col-2 btn btn-md btn-success mb-3">Tambah Kata Baru</a>
+                            <a href="{{ route('PaketSoal.create') }}" class="col-2 btn btn-md btn-success mb-3">Tambah Paket Soal Baru</a>
                         </div>
                         <table class="table table-bordered">
                             <thead>

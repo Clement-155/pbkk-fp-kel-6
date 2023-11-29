@@ -77,7 +77,7 @@ class PaketCRUDController extends Controller
             'jumlah_soal' => 0,
         ]);
 
-        return redirect()->route('PaketSoal.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('PaketSoal.create')->with(['success' => 'Data Berhasil Disimpan!']);
     }
 
 }

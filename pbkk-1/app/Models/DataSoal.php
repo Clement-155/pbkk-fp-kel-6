@@ -22,7 +22,10 @@ class DataSoal extends Model
         'paket_soals_id',
         'tipe_soal',
         'soal',
-        'jawaban'
+        'jawaban',
+        'jawaban2',
+        'jawaban3',
+        'jawaban4',
      ];
 
      public function paketSoal(): BelongsTo
