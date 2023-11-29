@@ -24,12 +24,12 @@
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="col-2" scope="col">Last Editor</th>
+                                    <th class="col-1" scope="col">Last Editor</th>
                                     <th class="col-2" scope="col">Bahasa</th>
                                     <th class="col-2" scope="col">Nama</th>
                                     <th class="col-3" scope="col">Deskripsi</th>
-                                    <th class="col-3" scope="col">Jumlah Soal</th>
-
+                                    <th class="col-1" scope="col">Jumlah Soal</th>
+                                    <th class="col-2" scope="col">Pilihan</th>
                                     <!-- NOTE: Unused option buttons
                                     <th class="col-1" scope="col">Options</th>
                                     -->
@@ -43,7 +43,7 @@
                                     <td>{{ $paket->nama_paket }}</td>
                                     <td>{{ $paket->deskripsi }}</td>
                                     <td>{{ $paket->jumlah_soal }}</td>
-
+                                    <td><a href="{{ route('Soal.create', ['id_paket' => $paket->id]) }}" class="btn btn-md btn-success m-3">Tambah Soal</a></td>
                                 </tr>
                                 @empty
                                 <div class="alert alert-danger">

@@ -1,7 +1,7 @@
 <!-- Basis dasar kode & layout : https://santrikoding.com/tutorial-laravel-10-4-menampilkan-data-dari-database -->
 <x-app-layout>
 
-    <div class="container mt-5 mb-5" data-bs-theme="dark">
+    <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
                 <div class="card border-0 shadow-sm rounded">
@@ -53,7 +53,7 @@
 
                             <button type="submit" class="m-2 btn btn-success">SAVE</button>
                             <button type="reset" class="m-2 btn btn-md btn-warning">RESET</button>
-                            <a href="{{ route('PaketSoal.create') }}" class="m-2 btn btn-md btn-secondary">RETURN</a>
+                            <a href="{{ route('PaketSoal.index') }}" class="m-2 btn btn-md btn-secondary">RETURN</a>
                         </form> 
                     </div>
                 </div>
