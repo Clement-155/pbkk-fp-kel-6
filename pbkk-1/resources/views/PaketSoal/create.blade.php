@@ -15,6 +15,7 @@
                                 <label class="font-weight-bold">bahasa</label>
                                 <!-- <input type="text" class="form-control @error('bahasa') is-invalid @enderror" name="bahasa" value="{{ old('bahasa') }}" placeholder=""> -->
                                 <select class="form-select" name="bahasa">
+                                    <option class="text-black-50" selected disabled value="NULL">Pilih Bahasa</option>
                                     @foreach ($bahasa as $Bahasa)
                                         <option value='{{ $Bahasa["id"] }}'>{{ $Bahasa["kata"] }}</option>
                                     @endforeach

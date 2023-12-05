@@ -22,7 +22,7 @@ return new class extends Migration
 
             $table->foreignId('last_editor');
             $table->foreignId('paket_soals_id');
-
+            $table->foreignId('bahasas_id');
             /**
              * 1 = Isian
              * 2 = 4 Pilgan
@@ -37,6 +37,7 @@ return new class extends Migration
 
             $table->foreign('last_editor')->references('id')->on('users');
             $table->foreign('paket_soals_id')->references('id')->on('paket_soals');
+            $table->foreign('bahasas_id')->references('id')->on('bahasas');
 
             $table->timestamps();
         });

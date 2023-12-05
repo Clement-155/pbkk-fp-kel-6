@@ -8,6 +8,19 @@
                         <form action="{{ route('Soal.store', ['id_paket' => $id_paket]) }}" method="POST" enctype="multipart/form-data">
 
                             @csrf
+                            <input hidden readonly value="{{ $id_paket }}" name="id_paket">
+
+                            <div class="form-group">
+                                <label class="font-weight-bold">Urutan Soal</label>
+                                <input type="number" class="form-control @error('urutan_soal') is-invalid @enderror" name="urutan_soal" value="{{ old('urutan_soal') }}" placeholder="">
+
+                                <!-- error message untuk kata -->
+                                @error('urutan_soal')
+                                <div class="alert alert-danger mt-2">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
 
                             <div class="form-group">
 
@@ -29,7 +42,7 @@
 
                             <div class="form-group">
                                 <label class="font-weight-bold">Pertanyaan</label>
-                                <textarea class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" rows="5" placeholder="">{{ old('deskripsi') }}</textarea>
+                                <textarea class="form-control @error('pertanyaan') is-invalid @enderror" name="pertanyaan" rows="5" placeholder="">{{ old('pertanyaan') }}</textarea>
 
 
                                 <!-- error message untuk kata -->
