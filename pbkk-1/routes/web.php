@@ -33,6 +33,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::post('/nilais', 'NilaiController@store');
+Route::put('/nilais/{nilais}', 'NilaiController@update');
+Route::delete('/nilais/{nilais}', 'NilaiController@destroy');
+
 require __DIR__.'/auth.php';
 
 Route::resource('/KamusBahasa', \App\Http\Controllers\KamusBahasaController::class)->middleware('auth');
