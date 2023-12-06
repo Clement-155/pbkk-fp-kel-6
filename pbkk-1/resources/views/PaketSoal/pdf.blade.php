@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-    <h1>Soal</h1>
+    <h1>Paket soal</h1>
 
     @foreach($soal as $index => $soal)
         <Siv clasS="soal">
