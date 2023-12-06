@@ -8,7 +8,7 @@
                     <h1 class="h1">Quiz Bahasa Daerah</h1>
                     
                     <p>Uji pemahaman anda dalam bahasa daerah!!</p>
-                    <a href="{{ route('paketsoal.generate-pdf') }}" class="btn btn-primary" target="_blank">Download Quiz PDF</a>
+                    <a href="{{ route('paketsoal.generate-pdf') }}" class="btn btn-primary" target="_blank">Download PDF Paket Soal</a>
                     <!-- Login Message -->
                     <div class="py-12">
                         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
