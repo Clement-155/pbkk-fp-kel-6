@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\PaketSoal;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -56,6 +57,8 @@ class KamusInggrisSeeder extends Seeder
                 }
             }
             fclose($handle);
+
+            PaketSoal::factory()->count(5)->create();
         }
 
 

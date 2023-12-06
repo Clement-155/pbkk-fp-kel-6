@@ -22,7 +22,7 @@ class NilaiController extends Controller
         return response()->json(['message' => 'Nilai berhasil dimasukkan', 'nilais' => $nilais], 201);
     }
 
-    public function update(Request $request, Grade $grade)
+    public function update(Request $request, Nilai $grade)
     {
         // Validate the incoming request data
         $validatedData = $request->validate([

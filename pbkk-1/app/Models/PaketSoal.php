@@ -4,6 +4,8 @@ namespace App\Models;
 
 use App\Models\Bahasa;
 use App\Models\DataSoal;
+use Database\Factories\PaketFactory;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,6 +27,14 @@ class PaketSoal extends Model
         'nama_paket',
         'deskripsi'
      ];
+
+     /**
+     * Create a new factory instance for the model.
+     */
+    protected static function newFactory(): Factory
+    {
+        return PaketFactory::new();
+    }
 
      public function dataSoal(): HasMany
      {
