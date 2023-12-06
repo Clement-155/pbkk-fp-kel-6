@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nilai;
+use Illuminate\Support\Facades\Redirect;
 use PDF;
 use App\Models\Bahasa;
 use App\Models\DataSoal;
@@ -127,7 +129,16 @@ class PaketCRUDController extends Controller
             }
             
         }
+
+        $nilai = count(array_filter($benar)) / count($benar);
+ 
+        Nilai::create([
+            'user_id' => Auth::id(),
+            'paket_soal_id' => $PaketSoal,
+            'nilai' => $nilai*100,
+        ]);
         
+        return redirect()->route('PaketSoal.index')->with(['success' => 'Nilai Berhasil Disimpan!']);
     }
 
     public function generatePDF()

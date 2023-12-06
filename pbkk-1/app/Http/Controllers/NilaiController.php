@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Nilai;
 use Illuminate\Http\Request;
 
 class NilaiController extends Controller
@@ -14,7 +15,7 @@ class NilaiController extends Controller
             'paket_soal_id' => 'required|exists:paket_soal,id',
             'nilai' => 'required|integer',
         ]);
-
+        dd($request);
         // Create a new grade entry
         $nilais = Nilai::create($validatedData);
 
