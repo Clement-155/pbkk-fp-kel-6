@@ -77,6 +77,21 @@ class SoalCRUDController extends Controller
             'jawaban_D' => 'required_unless:tipe_soal,1',
         ], $this->messages())->validate();
 
+        switch ($request->tipe_soal) {
+            case 1:
+                $jawaban_benar = $request->jawaban_isian;
+                break;
+            case 2:
+                $jawaban_benar = Validator::make(['jawaban_benar' => $request->jawaban_benar], [
+                    'jawaban_benar' => 'required|regex:/^[1-4]/'
+            ])->validate();
+                break;
+            case 3:
+                $jawaban_benar = Validator::make(['jawaban_benar' => $request->jawaban_benar], [
+                    'jawaban_benar' => 'required|regex:/^[1-4](,[1-4]){0,2}/'
+            ])->validate();
+                break;
+        }
 
         $jawaban1 = $request->jawaban_isian ? $request->jawaban_isian : $request->jawaban_A;
 
@@ -92,6 +107,7 @@ class SoalCRUDController extends Controller
             'jawaban2' => $request->jawaban_B,
             'jawaban3' => $request->jawaban_C,
             'jawaban4' => $request->jawaban_D,
+            'jawaban_benar' => $request->jawaban_benar
 
             
         ]);

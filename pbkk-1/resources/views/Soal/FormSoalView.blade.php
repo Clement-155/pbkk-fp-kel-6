@@ -132,6 +132,19 @@
                                     </div>
                                     @enderror
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="font-weight-bold">Jawaban Benar ([1-4],{[1-4],...}, contoh = "1,4"))</label>
+                                    <input type="text" class="form-control @error('jawaban_benar') is-invalid @enderror" name="jawaban_benar" value="{{ old('jawaban_benar') }}" placeholder="">
+
+
+                                    <!-- error message untuk kata -->
+                                    @error('jawaban_benar')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                    @enderror
+                                </div>
                             </div>
                             <!-- Jawaban pilgan END -->
                             <button type="submit" class="m-2 btn btn-md btn-primary">SAVE</button>

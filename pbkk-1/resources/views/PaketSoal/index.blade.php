@@ -43,7 +43,10 @@
                                     <td>{{ $paket->nama_paket }}</td>
                                     <td>{{ $paket->deskripsi }}</td>
                                     <td>{{ $paket->jumlah_soal }}</td>
-                                    <td><a href="{{ route('Soal.create', ['id_paket' => $paket->id]) }}" class="btn btn-md btn-success m-3">Tambah Soal</a></td>
+                                    <td>
+                                        <a href="{{ route('PaketSoal.show', ['PaketSoal' => $paket->id]) }}" class="btn btn-md btn-primary m-3">Kerjakan</a>
+                                        <a href="{{ route('Soal.create', ['id_paket' => $paket->id]) }}" class="btn btn-md btn-success m-3">Tambah Soal</a>
+                                    </td>
                                 </tr>
                                 @empty
                                 <div class="alert alert-danger">

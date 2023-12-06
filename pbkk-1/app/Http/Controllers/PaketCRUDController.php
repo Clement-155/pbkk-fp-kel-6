@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bahasa;
+use App\Models\DataSoal;
 use App\Models\PaketSoal;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -78,6 +79,15 @@ class PaketCRUDController extends Controller
         ]);
 
         return redirect()->route('PaketSoal.create')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+
+    public function show(Request $request, $PaketSoal): View
+    {
+        $paket_soal = PaketSoal::all()->find($PaketSoal);
+        $data_soal = $paket_soal->dataSoal->toArray();
+        
+        $paket_soal = $paket_soal->toArray();
+        return view('Soal.MainSoalView', ['data_soal' => $data_soal, 'id_paket' => $paket_soal["id"], 'namaPaket' => $paket_soal["nama_paket"]]);
     }
 
 }

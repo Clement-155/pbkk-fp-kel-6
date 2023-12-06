@@ -34,6 +34,7 @@ return new class extends Migration
             $table->text('jawaban2')->nullable();
             $table->text('jawaban3')->nullable();
             $table->text('jawaban4')->nullable();
+            $table->text('jawaban_benar')->nullable();
 
             $table->foreign('last_editor')->references('id')->on('users');
             $table->foreign('paket_soals_id')->references('id')->on('paket_soals');
