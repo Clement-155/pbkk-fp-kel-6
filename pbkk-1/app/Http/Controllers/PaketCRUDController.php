@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Bahasa;
 use App\Models\PaketSoal;
 use Illuminate\Http\RedirectResponse;
@@ -78,6 +79,15 @@ class PaketCRUDController extends Controller
         ]);
 
         return redirect()->route('PaketSoal.index')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+
+    public function generatePDF()
+    {
+        $soal = PaketSoal::inRandomOrder()->take(10)->get(); // Example: Retrieve 10 random quiz questions
+
+        $pdf = PDF::loadView('PaketSoal.pdf', ['soal' => $soal]);
+
+        return $pdf->download('PaketSoal.pdf');
     }
 
 }

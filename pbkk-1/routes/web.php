@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KamusBahasaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PaketCRUDController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -36,6 +37,10 @@ Route::middleware('auth')->group(function () {
 Route::post('/nilais', 'NilaiController@store');
 Route::put('/nilais/{nilais}', 'NilaiController@update');
 Route::delete('/nilais/{nilais}', 'NilaiController@destroy');
+
+// Define a route for generating the PDF
+// Route::get('/PaketSoal/generate-pdf', 'PaketCRUDController@generatePDF');
+Route::get('/PaketSoal/generate-pdf', [PaketCRUDController::class, 'generatePDF'])->middleware('auth')->name('paketsoal.generate-pdf');;
 
 require __DIR__.'/auth.php';
 
