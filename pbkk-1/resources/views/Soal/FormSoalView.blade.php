@@ -57,7 +57,7 @@
                                 <label class="font-weight-bold">Tipe Soal</label>
                                     <select class="form-select" name="tipe_soal">
                                         <option class="text-black-50" selected disabled value="NULL">Pilih Tipe Soal</option>
-                                        <option value='1'>Isian</option>
+                                        <!-- <option value='1'>Isian</option> -->
                                         <option value='2'>Pilihan Ganda (4)</option>
                                         <option value='3'>Beberapa Pilihan (4)</option>
                                     </select>

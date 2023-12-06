@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\KamusBahasaController;
+use App\Http\Controllers\PaketCRUDController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,5 +37,8 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('/KamusBahasa', \App\Http\Controllers\KamusBahasaController::class)->middleware('auth');
+
 Route::resource('/PaketSoal', \App\Http\Controllers\PaketCRUDController::class)->middleware('auth');
+Route::post('/PaketSoal/{PaketSoal}/Hasil', [PaketCRUDController::class, 'evaluate'])->middleware('auth')->name('PaketSoal.evaluate');
+
 Route::resource('/Soal', \App\Http\Controllers\SoalCRUDController::class)->middleware('auth');

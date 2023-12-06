@@ -90,4 +90,43 @@ class PaketCRUDController extends Controller
         return view('Soal.MainSoalView', ['data_soal' => $data_soal, 'id_paket' => $paket_soal["id"], 'namaPaket' => $paket_soal["nama_paket"]]);
     }
 
+    public function evaluate(Request $request, $PaketSoal)
+    {
+        $benar = [];
+        foreach ($request->jawaban as $jawaban)
+        {
+            $kunci = DataSoal::all(['id', 'jawaban_benar'])->find($jawaban['id_soal'])->jawaban_benar;
+            
+            switch ($jawaban["tipe_soal"]) {
+                case "2":
+                    
+                    if ($kunci == $jawaban['ans']){
+                        array_push($benar, true);
+                    }
+                    else{
+                        array_push($benar, false);
+                    }
+                    break;
+                case "3":
+                    $kunci = explode(",", $kunci);
+                    $isTrue = true;
+
+                    foreach($kunci as $key){
+                        $isTrue = $isTrue && array_key_exists($key, $jawaban["ans"]);
+                    }
+                    
+                    if ($isTrue){
+                        array_push($benar, true);
+                    }
+                    else{
+                        array_push($benar, false);
+                    }
+
+                    break;
+            }
+            
+        }
+        
+    }
+
 }
