@@ -28,11 +28,11 @@ class PaketSoal extends Model
 
      public function dataSoal(): HasMany
      {
-         return $this->hasMany(DataSoal::class);
+         return $this->hasMany(DataSoal::class, "paket_soals_id");
      }
 
      public function bahasa(): BelongsTo
      {
-         return $this->belongsTo(Bahasa::class);
+         return $this->belongsTo(Bahasa::class, "bahasas_id");
      }
 }

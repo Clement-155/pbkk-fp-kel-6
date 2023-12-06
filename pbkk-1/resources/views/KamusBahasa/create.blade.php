@@ -1,14 +1,6 @@
-<!DOCTYPE html>
 <!-- Basis dasar kode & layout : https://santrikoding.com/tutorial-laravel-10-4-menampilkan-data-dari-database -->
-<html lang="en" data-bs-theme="dark">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" pengertian="width=device-width, initial-scale=1.0">
-    <title>Tambah data kata baru</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-</head>
-<body>
 
+<x-app-layout>
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-12">
@@ -21,8 +13,12 @@
                             <div class="form-group">
 
                                 <label class="font-weight-bold">bahasa</label>
+                                                                        <option class="text-black-50" selected disabled value="NULL">Pilih Tipe Soal</option>
+
                                 <!-- <input type="text" class="form-control @error('bahasa') is-invalid @enderror" name="bahasa" value="{{ old('bahasa') }}" placeholder=""> -->
                                 <select name="bahasa">
+                                    <option class="text-black-50" selected disabled value="NULL">Pilih Bahasa</option>
+
                                     @foreach ($bahasa as $Bahasa)
                                         <option value='{{ $Bahasa["id"] }}'>{{ $Bahasa["kata"] }}</option>
                                     @endforeach
@@ -80,8 +76,18 @@
             </div>
         </div>
     </div>
-    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-</body>
-</html>
+</x-app-layout>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<script>
+        //message with toastr
+        @if (session()->has('success'))
+
+            toastr.success('{{ session('success') }}', 'Entry Added!');
+
+        @elseif (session()->has('error'))
+
+            toastr.error('{{ session('error') }}', 'ERROR : Failed to add entry!');
+
+        @endif
+
+    </script>

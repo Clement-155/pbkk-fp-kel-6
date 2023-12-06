@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use PDF;
 use App\Models\Bahasa;
+use App\Models\DataSoal;
 use App\Models\PaketSoal;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -78,7 +79,55 @@ class PaketCRUDController extends Controller
             'jumlah_soal' => 0,
         ]);
 
-        return redirect()->route('PaketSoal.index')->with(['success' => 'Data Berhasil Disimpan!']);
+        return redirect()->route('PaketSoal.create')->with(['success' => 'Data Berhasil Disimpan!']);
+    }
+
+    public function show(Request $request, $PaketSoal): View
+    {
+        $paket_soal = PaketSoal::all()->find($PaketSoal);
+        $data_soal = $paket_soal->dataSoal->toArray();
+        
+        $paket_soal = $paket_soal->toArray();
+        return view('Soal.MainSoalView', ['data_soal' => $data_soal, 'id_paket' => $paket_soal["id"], 'namaPaket' => $paket_soal["nama_paket"]]);
+    }
+
+    public function evaluate(Request $request, $PaketSoal)
+    {
+        $benar = [];
+        foreach ($request->jawaban as $jawaban)
+        {
+            $kunci = DataSoal::all(['id', 'jawaban_benar'])->find($jawaban['id_soal'])->jawaban_benar;
+            
+            switch ($jawaban["tipe_soal"]) {
+                case "2":
+                    
+                    if ($kunci == $jawaban['ans']){
+                        array_push($benar, true);
+                    }
+                    else{
+                        array_push($benar, false);
+                    }
+                    break;
+                case "3":
+                    $kunci = explode(",", $kunci);
+                    $isTrue = true;
+
+                    foreach($kunci as $key){
+                        $isTrue = $isTrue && array_key_exists($key, $jawaban["ans"]);
+                    }
+                    
+                    if ($isTrue){
+                        array_push($benar, true);
+                    }
+                    else{
+                        array_push($benar, false);
+                    }
+
+                    break;
+            }
+            
+        }
+        
     }
 
     public function generatePDF()

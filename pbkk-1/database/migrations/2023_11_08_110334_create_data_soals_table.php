@@ -14,14 +14,31 @@ return new class extends Migration
         Schema::create('data_soals', function (Blueprint $table) {
             $table->id();
 
+            /**
+             * Angka yang digunakan untuk mengurutkan soal saat diambil dari DB.
+             * Tidak harus urut.
+             */
+            $table->unsignedSmallInteger('urutan_soal');
+
             $table->foreignId('last_editor');
             $table->foreignId('paket_soals_id');
+            $table->foreignId('bahasas_id');
+            /**
+             * 1 = Isian
+             * 2 = 4 Pilgan
+             * 3 = 4 Pilihan, lebih dari 1
+             */
             $table->smallInteger('tipe_soal');
             $table->text('soal');
             $table->text('jawaban');
+            $table->text('jawaban2')->nullable();
+            $table->text('jawaban3')->nullable();
+            $table->text('jawaban4')->nullable();
+            $table->text('jawaban_benar')->nullable();
 
             $table->foreign('last_editor')->references('id')->on('users');
             $table->foreign('paket_soals_id')->references('id')->on('paket_soals');
+            $table->foreign('bahasas_id')->references('id')->on('bahasas');
 
             $table->timestamps();
         });

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class KamusInggrisSeeder extends Seeder
 {
@@ -15,6 +16,25 @@ class KamusInggrisSeeder extends Seeder
     {
         $row = 1;
         if (($handle = fopen(storage_path('seeding/Dictionary.csv'), "r")) !== FALSE) {
+
+            DB::table('users')->insert(
+                [
+    
+                        'name' => "DEBUG",
+                        'email' => "debug@example.com",
+                        'password' => Hash::make("DEBUG"),
+       
+            ]
+            );
+
+            DB::table('bahasas')->insert(
+                [
+    
+                        'bahasa' => "debugBahasa"
+       
+            ]
+            );
+
             while (($row < 150000 && $data = fgetcsv($handle, 1500, ",")) !== FALSE) {
                 if($row % 500 > 0){
                     $row++;
@@ -24,8 +44,8 @@ class KamusInggrisSeeder extends Seeder
                 DB::table('kamus_bahasas')->insert(
                     [
         
-                            'last_editor' => 0,
-                            'bahasa' => 0,
+                            'last_editor' => 1,
+                            'bahasa' => 1,
                             'kata' => $data[0],
                             'pengertian' => $data[2],
                             'contoh' => "PLACEHOLDER",

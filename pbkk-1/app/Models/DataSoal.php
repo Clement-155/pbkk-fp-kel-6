@@ -19,10 +19,16 @@ class DataSoal extends Model
 
      protected $fillable = [
         'last_editor',
+        'urutan_soal',
+        'bahasas_id',
         'paket_soals_id',
         'tipe_soal',
         'soal',
-        'jawaban'
+        'jawaban',
+        'jawaban2',
+        'jawaban3',
+        'jawaban4',
+        'jawaban_benar'
      ];
 
      public function paketSoal(): BelongsTo
